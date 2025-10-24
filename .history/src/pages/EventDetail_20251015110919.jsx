@@ -1,0 +1,54 @@
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { getEvent, applyEvent } from '../api/eventApi'
+import { Button, Carousel, Ratio } from 'react-bootstrap'
+
+export default function EventDetail(){
+  const { id } = useParams()
+  const [event, setEvent] = useState(null)
+  const [applied, setApplied] = useState(false)
+
+  useEffect(()=>{ (async()=>{
+    const { data } = await getEvent(id); setEvent(data)
+  })() },[id])
+
+  const apply = async ()=>{ await applyEvent({ eventId: id }); setApplied(true) }
+
+  if (!event) return <div>Loading…</div>
+
+  return (
+    <div>
+      <h2 className="mb-1">{event.title}</h2>
+      <div className="text-muted mb-3">
+        {new Date(event.startAt || event.date).toLocaleString()} • {event.location?.name || event.location || 'TBA'}
+      </div>
+
+      {/* Media gallery */}
+      {event.media?.length > 0 && (
+        <div className="mb-4">
+          <Carousel variant="dark" className="shadow-sm rounded overflow-hidden">
+            {event.media.map((m, i) => (
+              <Carousel.Item key={i}>
+                <Ratio aspectRatio="16x9">
+                  {m.kind === 'video'
+                    ? <video src={m.url} controls style={{objectFit:'cover', width:'100%', height:'100%'}}/>
+                    : <img src={m.url} alt={`media-${i}`} style={{objectFit:'cover', width:'100%', height:'100%'}}/>}
+                </Ratio>
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </div>
+      )}
+
+      
+
+      <p>{event.description}</p>
+
+      <div className="d-flex gap-2">
+        <Button onClick={apply} disabled={applied} variant="primary">
+          {applied ? 'Applied' : 'Apply'}
+        </Button>
+      </div>
+    </div>
+  )
+}

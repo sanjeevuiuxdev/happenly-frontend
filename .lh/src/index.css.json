@@ -1,0 +1,46 @@
+{
+    "sourceFile": "src/index.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1760210082481,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1760210093490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,10 +54,12 @@\n   outline: 4px auto -webkit-focus-ring-color;\n }\n \n \n+/* small hover animation for event cards */\n+.event-card { transition: transform .15s ease, box-shadow .15s ease; }\n+.event-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }\n \n-\n @media (prefers-color-scheme: light) {\n   :root {\n     color: #213547;\n     background-color: #ffffff;\n"
+                },
+                {
+                    "date": 1760273506875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,73 +1,9 @@\n-:root {\n-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;\n-  line-height: 1.5;\n-  font-weight: 400;\n+:root { --nav-height: 64px; }\n+@media (min-width: 992px) { :root { --nav-height: 72px; } }\n \n-  color-scheme: light dark;\n-  color: rgba(255, 255, 255, 0.87);\n-  background-color: #242424;\n+/* Ensure content starts below fixed navbar */\n+body { padding-top: var(--nav-height); }\n \n-  font-synthesis: none;\n-  text-rendering: optimizeLegibility;\n-  -webkit-font-smoothing: antialiased;\n-  -moz-osx-font-smoothing: grayscale;\n-}\n-\n-a {\n-  font-weight: 500;\n-  color: #646cff;\n-  text-decoration: inherit;\n-}\n-a:hover {\n-  color: #535bf2;\n-}\n-\n-body {\n-  margin: 0;\n-  display: flex;\n-  place-items: center;\n-  min-width: 320px;\n-  min-height: 100vh;\n-}\n-\n-h1 {\n-  font-size: 3.2em;\n-  line-height: 1.1;\n-}\n-\n-button {\n-  border-radius: 8px;\n-  border: 1px solid transparent;\n-  padding: 0.6em 1.2em;\n-  font-size: 1em;\n-  font-weight: 500;\n-  font-family: inherit;\n-  background-color: #1a1a1a;\n-  cursor: pointer;\n-  transition: border-color 0.25s;\n-}\n-button:hover {\n-  border-color: #646cff;\n-}\n-button:focus,\n-button:focus-visible {\n-  outline: 4px auto -webkit-focus-ring-color;\n-}\n-\n-\n-/* small hover animation for event cards */\n+/* (already present) small hover effect for cards */\n .event-card { transition: transform .15s ease, box-shadow .15s ease; }\n .event-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }\n-\n-@media (prefers-color-scheme: light) {\n-  :root {\n-    color: #213547;\n-    background-color: #ffffff;\n-  }\n-  a:hover {\n-    color: #747bff;\n-  }\n-  button {\n-    background-color: #f9f9f9;\n-  }\n-}\n"
+                },
+                {
+                    "date": 1760648699477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,4 +6,7 @@\n \n /* (already present) small hover effect for cards */\n .event-card { transition: transform .15s ease, box-shadow .15s ease; }\n .event-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }\n+body {\n+    padding-top: 0 !important;\n+  }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1760648704548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,7 +6,4 @@\n \n /* (already present) small hover effect for cards */\n .event-card { transition: transform .15s ease, box-shadow .15s ease; }\n .event-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }\n-body {\n-    padding-top: 0 !important;\n-  }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1760648893193,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n :root { --nav-height: 64px; }\n @media (min-width: 992px) { :root { --nav-height: 72px; } }\n \n /* Ensure content starts below fixed navbar */\n-body { padding-top: var(--nav-height); }\n+/* body { padding-top: var(--nav-height); } */\n \n /* (already present) small hover effect for cards */\n .event-card { transition: transform .15s ease, box-shadow .15s ease; }\n .event-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }\n+a{}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1760648899807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,5 +6,5 @@\n \n /* (already present) small hover effect for cards */\n .event-card { transition: transform .15s ease, box-shadow .15s ease; }\n .event-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }\n-a{}\n\\ No newline at end of file\n+a{tex}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1760649107751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,5 +6,13 @@\n \n /* (already present) small hover effect for cards */\n .event-card { transition: transform .15s ease, box-shadow .15s ease; }\n .event-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }\n-a{tex}\n\\ No newline at end of file\n+a{text-decoration: none;}\n+.carousel-control-next-icon, .carousel-control-prev-icon {\n+    display: nonew;\n+    width: 2rem;\n+    height: 2rem;\n+    background-repeat: no-repeat;\n+    background-position: 50%;\n+    background-size: 100% 100%;\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1760210082481,
+            "name": "Commit-0",
+            "content": ":root {\n  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;\n  line-height: 1.5;\n  font-weight: 400;\n\n  color-scheme: light dark;\n  color: rgba(255, 255, 255, 0.87);\n  background-color: #242424;\n\n  font-synthesis: none;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\na {\n  font-weight: 500;\n  color: #646cff;\n  text-decoration: inherit;\n}\na:hover {\n  color: #535bf2;\n}\n\nbody {\n  margin: 0;\n  display: flex;\n  place-items: center;\n  min-width: 320px;\n  min-height: 100vh;\n}\n\nh1 {\n  font-size: 3.2em;\n  line-height: 1.1;\n}\n\nbutton {\n  border-radius: 8px;\n  border: 1px solid transparent;\n  padding: 0.6em 1.2em;\n  font-size: 1em;\n  font-weight: 500;\n  font-family: inherit;\n  background-color: #1a1a1a;\n  cursor: pointer;\n  transition: border-color 0.25s;\n}\nbutton:hover {\n  border-color: #646cff;\n}\nbutton:focus,\nbutton:focus-visible {\n  outline: 4px auto -webkit-focus-ring-color;\n}\n\n\n\n\n@media (prefers-color-scheme: light) {\n  :root {\n    color: #213547;\n    background-color: #ffffff;\n  }\n  a:hover {\n    color: #747bff;\n  }\n  button {\n    background-color: #f9f9f9;\n  }\n}\n"
+        }
+    ]
+}

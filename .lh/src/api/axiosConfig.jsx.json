@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/api/axiosConfig.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1760209742460,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1760596075221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n-import axios from 'axios'\n+import axios from 'axios';\n \n-const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true })\n+const api = axios.create({\n+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1',\n+});\n \n-api.interceptors.request.use(cfg => {\n-  const token = localStorage.getItem('token')\n-  if (token) cfg.headers.Authorization = `Bearer ${token}`\n\\ No newline at end of file\n-  return cfg\n-})\n+api.interceptors.request.use((cfg) => {\n+  const token = localStorage.getItem('token');\n+  if (token) cfg.headers.Authorization = `Bearer ${token}`;\n+  return cfg;\n+});\n \n-export default api\n+export default api;\n"
+                },
+                {
+                    "date": 1760646110524,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import axios from 'axios';\n \n const api = axios.create({\n-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1',\n+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true,\n });\n \n api.interceptors.request.use((cfg) => {\n   const token = localStorage.getItem('token');\n"
+                }
+            ],
+            "date": 1760209742460,
+            "name": "Commit-0",
+            "content": "import axios from 'axios'\n\nconst api = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true })\n\napi.interceptors.request.use(cfg => {\n  const token = localStorage.getItem('token')\n  if (token) cfg.headers.Authorization = `Bearer ${token}`\n  return cfg\n})\n\nexport default api"
+        }
+    ]
+}

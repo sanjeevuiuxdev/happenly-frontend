@@ -1,0 +1,12 @@
+:root { --nav-height: 64px; }
+@media (min-width: 992px) { :root { --nav-height: 72px; } }
+
+/* Ensure content starts below fixed navbar */
+/* body { padding-top: var(--nav-height); } */
+
+/* (already present) small hover effect for cards */
+.event-card { transition: transform .15s ease, box-shadow .15s ease; }
+.event-card:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); }
+body {
+    padding-top: 0 !important;
+  }

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/App.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1760209684529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1760209684529,
+            "name": "Commit-0",
+            "content": "import { Routes, Route } from 'react-router-dom'\nimport AppNavbar from './components/AppNavbar'\nimport Home from './pages/Home'\nimport Events from './pages/Events'\nimport EventDetail from './pages/EventDetail'\nimport Login from './pages/Login'\nimport Signup from './pages/Signup'\nimport Dashboard from './pages/Dashboard'\nimport AiAssistant from './pages/AiAssistant'\nimport ProtectedRoute from './components/ProtectedRoute'\n\nexport default function App(){\n  return (\n    <>\n      <AppNavbar />\n      <div className=\"container py-4\">\n        <Routes>\n          <Route path=\"/\" element={<Home />} />\n          <Route path=\"/events\" element={<Events />} />\n          <Route path=\"/events/:id\" element={<EventDetail />} />\n          <Route path=\"/login\" element={<Login />} />\n          <Route path=\"/signup\" element={<Signup />} />\n          <Route path=\"/ai\" element={<AiAssistant />} />\n          <Route path=\"/dashboard\" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />\n          <Route path=\"*\" element={<div className=\"text-center text-muted\">Not Found</div>} />\n        </Routes>\n      </div>\n    </>\n  )\n}"
+        }
+    ]
+}

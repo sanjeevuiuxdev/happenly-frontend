@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/theme/ThemeProvider.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1761235729645,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1761235729645,
+            "name": "Commit-0",
+            "content": "import { createContext, useContext, useEffect, useMemo, useState } from 'react';\n\nconst ThemeCtx = createContext({ theme: 'system', setTheme: () => {} });\nexport const useTheme = () => useContext(ThemeCtx);\n\nconst THEME_KEY = 'theme'; // 'light' | 'dark' | 'system'\n\nfunction getSystemTheme() {\n  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';\n}\n\nfunction applyTheme(theme) {\n  const value = theme === 'system' ? getSystemTheme() : theme;\n  document.documentElement.setAttribute('data-bs-theme', value);\n}\n\nexport default function ThemeProvider({ children }) {\n  const [theme, setTheme] = useState(() => localStorage.getItem(THEME_KEY) || 'system');\n\n  // apply on load + when theme changes\n  useEffect(() => {\n    applyTheme(theme);\n    localStorage.setItem(THEME_KEY, theme);\n  }, [theme]);\n\n  // react to OS changes when on \"system\"\n  useEffect(() => {\n    if (theme !== 'system') return;\n    const mq = window.matchMedia('(prefers-color-scheme: dark)');\n    const handler = () => applyTheme('system');\n    mq.addEventListener('change', handler);\n    return () => mq.removeEventListener('change', handler);\n  }, [theme]);\n\n  const value = useMemo(() => ({ theme, setTheme }), [theme]);\n  return <ThemeCtx.Provider value={value}>{children}</ThemeCtx.Provider>;\n}\n"
+        }
+    ]
+}

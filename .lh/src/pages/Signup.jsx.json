@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/pages/Signup.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1760210033191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1760210033191,
+            "name": "Commit-0",
+            "content": "import { useState } from 'react'\nimport { signup } from '../api/authApi'\n\nexport default function Signup(){\n  const [form, setForm] = useState({ name:'', email:'', password:'' })\n  const onChange = e => setForm({ ...form, [e.target.name]: e.target.value })\n  const onSubmit = async e => { e.preventDefault(); await signup(form); window.location.href = '/login' }\n  return (\n    <form className=\"mx-auto\" style={{maxWidth:480}} onSubmit={onSubmit}>\n      <h3 className=\"mb-3\">Create Account</h3>\n      <input name=\"name\" className=\"form-control mb-2\" placeholder=\"Name\" onChange={onChange} />\n      <input name=\"email\" className=\"form-control mb-2\" placeholder=\"Email\" onChange={onChange} />\n      <input type=\"password\" name=\"password\" className=\"form-control mb-3\" placeholder=\"Password\" onChange={onChange} />\n      <button className=\"btn btn-primary w-100\">Sign Up</button>\n    </form>\n  )\n}"
+        }
+    ]
+}

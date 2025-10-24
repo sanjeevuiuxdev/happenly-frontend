@@ -1,0 +1,46 @@
+{
+    "sourceFile": "src/api/eventApi.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1760209801033,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1760415652397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,8 @@\n import api from './axiosConfig'\n export const listEvents = (params) => api.get('/events', { params })\n export const getEvent = (id) => api.get(`/events/${id}`)\n export const createEvent = (data) => api.post('/events', data)\n-export const applyEvent = (payload) => api.post('/applications', payload)\n\\ No newline at end of file\n+export const applyEvent = (payload) => api.post('/applications', payload)\n+\n+export const listApplications = (params) => api.get('/applications', { params });\n+export const appStats = () => api.get('/applications/stats');\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1760416968457,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,12 @@\n-import api from './axiosConfig'\n-export const listEvents = (params) => api.get('/events', { params })\n-export const getEvent = (id) => api.get(`/events/${id}`)\n-export const createEvent = (data) => api.post('/events', data)\n-export const applyEvent = (payload) => api.post('/applications', payload)\n+import api from './axiosConfig';\n \n+export const listEvents = (params) => api.get('/events', { params });\n\\ No newline at end of file\n+export const getEvent = (id) => api.get(`/events/${id}`);\n+\n+// multipart create\n+export const createEvent = (formData) =>\n+  api.post('/events', formData, { headers: { 'Content-Type': 'multipart/form-data' } });\n+\n+export const applyEvent = (payload) => api.post('/applications', payload);\n export const listApplications = (params) => api.get('/applications', { params });\n-export const appStats = () => api.get('/applications/stats');\n+export const appStats = () => api.get('/applications/stats');\n"
+                },
+                {
+                    "date": 1760513415795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,29 @@\n+// src/api/eventApi.js\n import api from './axiosConfig';\n \n-export const listEvents = (params) => api.get('/events', { params });\n-export const getEvent = (id) => api.get(`/events/${id}`);\n+export const listEvents   = (params) => api.get('/events', { params });\n+export const getEvent     = (id)     => api.get(`/events/${id}`);\n \n-// multipart create\n+// CREATE (multipart)\n export const createEvent = (formData) =>\n-  api.post('/events', formData, { headers: { 'Content-Type': 'multipart/form-data' } });\n\\ No newline at end of file\n+  api.post('/events', formData, {\n+    headers: { 'Content-Type': 'multipart/form-data' },\n+  });\n \n-export const applyEvent = (payload) => api.post('/applications', payload);\n-export const listApplications = (params) => api.get('/applications', { params });\n-export const appStats = () => api.get('/applications/stats');\n+// UPDATE (JSON or multipart — pass FormData when sending files)\n+export const updateEvent = (id, data) => {\n+  if (data instanceof FormData) {\n+    return api.patch(`/events/${id}`, data, {\n+      headers: { 'Content-Type': 'multipart/form-data' },\n+    });\n+  }\n+  return api.patch(`/events/${id}`, data);\n+};\n+\n+// DELETE\n+export const deleteEvent = (id) => api.delete(`/events/${id}`);\n+\n+// Applications (admin)\n+export const applyEvent        = (payload) => api.post('/applications', payload);\n+export const listApplications  = (params)  => api.get('/applications', { params });\n+export const appStats          = ()        => api.get('/applications/stats');\n"
+                },
+                {
+                    "date": 1760642677954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,7 +23,10 @@\n // DELETE\n export const deleteEvent = (id) => api.delete(`/events/${id}`);\n \n // Applications (admin)\n-export const applyEvent        = (payload) => api.post('/applications', payload);\n+export const applyEvent = (payload) =>\n+  api.post('/applications', payload, {\n+    headers: { 'Content-Type': 'application/json' },\n+  });\n export const listApplications  = (params)  => api.get('/applications', { params });\n export const appStats          = ()        => api.get('/applications/stats');\n"
+                },
+                {
+                    "date": 1760643347565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,10 +23,8 @@\n // DELETE\n export const deleteEvent = (id) => api.delete(`/events/${id}`);\n \n // Applications (admin)\n-export const applyEvent = (payload) =>\n-  api.post('/applications', payload, {\n-    headers: { 'Content-Type': 'application/json' },\n-  });\n+export const applyEvent = (eventId, note = '') =>\n+  api.post('/applications', { eventId, note });\n export const listApplications  = (params)  => api.get('/applications', { params });\n export const appStats          = ()        => api.get('/applications/stats');\n"
+                },
+                {
+                    "date": 1760644953972,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,7 @@\n // DELETE\n export const deleteEvent = (id) => api.delete(`/events/${id}`);\n \n // Applications (admin)\n-export const applyEvent = (eventId, note = '') =>\n-  api.post('/applications', { eventId, note });\n+export const applyEvent = (payload) => api.post('/applications', payload);\n export const listApplications  = (params)  => api.get('/applications', { params });\n export const appStats          = ()        => api.get('/applications/stats');\n"
+                },
+                {
+                    "date": 1760646044740,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,7 +23,8 @@\n // DELETE\n export const deleteEvent = (id) => api.delete(`/events/${id}`);\n \n // Applications (admin)\n-export const applyEvent = (payload) => api.post('/applications', payload);\n+export const applyEvent = (eventId, note = '') =>\n+  api.post('/applications', { eventId, note });\n export const listApplications  = (params)  => api.get('/applications', { params });\n export const appStats          = ()        => api.get('/applications/stats');\n"
+                }
+            ],
+            "date": 1760209801033,
+            "name": "Commit-0",
+            "content": "import api from './axiosConfig'\nexport const listEvents = (params) => api.get('/events', { params })\nexport const getEvent = (id) => api.get(`/events/${id}`)\nexport const createEvent = (data) => api.post('/events', data)\nexport const applyEvent = (payload) => api.post('/applications', payload)"
+        }
+    ]
+}

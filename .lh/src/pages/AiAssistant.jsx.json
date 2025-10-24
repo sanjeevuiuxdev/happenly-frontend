@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/pages/AiAssistant.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1760210070821,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1760210070821,
+            "name": "Commit-0",
+            "content": "import { useState } from 'react'\nimport api from '../api/axiosConfig'\n\nexport default function AiAssistant(){\n  const [q, setQ] = useState('')\n  const [a, setA] = useState('Ask the AI a question about your events!')\n  const ask = async ()=>{\n    const { data } = await api.post('/ai/ask', { question: q })\n    setA(data.answer || 'No answer')\n  }\n  return (\n    <div>\n      <h2>AI Event Assistant</h2>\n      <div className=\"input-group my-3\">\n        <input className=\"form-control\" value={q} onChange={e=>setQ(e.target.value)} placeholder=\"e.g., What tech events are this month?\" />\n        <button className=\"btn btn-primary\" onClick={ask}>Ask AI</button>\n      </div>\n      <div className=\"border rounded p-3 bg-body-tertiary\">{a}</div>\n    </div>\n  )\n}"
+        }
+    ]
+}
