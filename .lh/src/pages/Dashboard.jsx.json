@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1760210051050,
@@ -24,6 +24,10 @@
                 {
                     "date": 1760505494114,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -90,9 +90,9 @@\n               ))}\n             </Form.Select>\n           </Col>\n           \n-          <Col md={3}>\n+          <Col md={4}>\n             <Form.Select value={filters.limit} onChange={(e) => update('limit', Number(e.target.value))}>\n               {[10, 20, 50, 100].map(n => <option key={n} value={n}>{n} per page</option>)}\n             </Form.Select>\n           </Col>\n"
+                },
+                {
+                    "date": 1761281372701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n   }, []);\n \n   useEffect(() => {\n     fetchApplications();\n-    // eslint-disable-next-line\n+    \n   }, [filters.eventId, filters.status, filters.page, filters.limit]);\n \n   async function fetchApplications() {\n     setLoading(true);\n"
                 }
             ],
             "date": 1760210051050,

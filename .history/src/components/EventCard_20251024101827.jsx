@@ -9,7 +9,7 @@ import { deleteEvent } from '../api/eventApi';
 function locationLabel(loc) {
   if (!loc) return 'TBA';
   if (typeof loc === 'string') {
-    if (/<iframe/i.test(loc)) return 'See map'; 
+    if (/<iframe/i.test(loc)) return 'See map'; // don't show raw HTML
     return loc;
   }
   return loc?.name || 'TBA';

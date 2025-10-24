@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1760295382617,
@@ -36,6 +36,10 @@
                 {
                     "date": 1761234958441,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -82,15 +82,15 @@\n \n           <Form.Group className=\"mb-3\">\n   <Form.Label>Location <small className=\"text-muted\">(text or Google Maps iframe)</small></Form.Label>\n   <Form.Control\n-    name=\"location\"\n-    as=\"textarea\"    \n-    rows={2}\n-    placeholder='e.g. \"Auditorium\" or paste Google Maps <iframe ... ></iframe>'\n-    value={form.location || ''}\n-    // onChange={onChange}\n-  />\n+  as=\"textarea\"\n+  rows={2}\n+  placeholder='e.g. \"Auditorium\" or paste Google Maps <iframe ...></iframe>'\n+  value={form.location || ''}\n+  onChange={(e) => setForm({ ...form, location: e.target.value })}\n+/>\n+\n </Form.Group>\n \n           <Form.Group className=\"mb-2\">\n   <Form.Label>Organizer Name</Form.Label>\n"
+                },
+                {
+                    "date": 1761281292858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   const [form, setForm] = useState({\n     title: '', description: '', department: '', type: '',\n     startAt: '', endAt: '', location: ''\n   })\n-  const [files, setFiles] = useState([])         // FileList → Array\n+  const [files, setFiles] = useState([])         \n   const [previews, setPreviews] = useState([])\n \n   const change = e => setForm({ ...form, [e.target.name]: e.target.value })\n \n"
                 }
             ],
             "date": 1760295382617,

@@ -17,7 +17,7 @@ function extractIframeSrc(htmlOrText = '') {
 function locationLabel(loc) {
   if (!loc) return 'TBA';
   if (typeof loc === 'string') {
-    // If it's an iframe string, show generic label
+    
     if (/<iframe/i.test(loc)) return 'See map below';
     // else show the text directly
     return loc;

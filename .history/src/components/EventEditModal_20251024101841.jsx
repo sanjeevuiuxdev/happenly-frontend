@@ -29,7 +29,7 @@ export default function EventEditModal({ show, onClose, event, onUpdated }) {
 
   const submit = async (e) => {
     e.preventDefault();
-   
+    // If admin selected new files -> send multipart; else send JSON
     if (files.length) {
       const fd = new FormData();
       Object.entries(form).forEach(([k,v]) => fd.append(k, v ?? ''));

@@ -46,7 +46,7 @@ export default function Home() {
   const onDateSelect = (iso) => nav(`/events?from=${iso}&to=${iso}`);
   const onEventClick = (ev) => nav(`/events/${ev.id}`);
 
-  
+  // react-big-calendar passes either an array (month) or object with start/end (week/day)
   const onRangeChange = (r) => {
     if (Array.isArray(r) && r.length) {
       const start = new Date(r[0].getFullYear(), r[0].getMonth(), 1);

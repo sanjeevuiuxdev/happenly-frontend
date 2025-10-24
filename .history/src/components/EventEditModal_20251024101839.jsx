@@ -29,7 +29,7 @@ export default function EventEditModal({ show, onClose, event, onUpdated }) {
 
   const submit = async (e) => {
     e.preventDefault();
-   
+    // If admin selected new files -> send multipart; else send JSON
     if (files.length) {
       const fd = new FormData();
       Object.entries(form).forEach(([k,v]) => fd.append(k, v ?? ''));
@@ -103,7 +103,7 @@ export default function EventEditModal({ show, onClose, event, onUpdated }) {
             </Col>
           </Row>
 
-         
+          {/* // In CreateEventModal.jsx and EventEditModal.jsx */}
 <Form.Group className="mb-3">
   <Form.Label>Location <small className="text-muted">(text or Google Maps iframe)</small></Form.Label>
   <Form.Control

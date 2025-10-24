@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 23,
             "patches": [
                 {
                     "date": 1760209996491,
@@ -92,6 +92,14 @@
                 {
                     "date": 1761235273683,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -145,12 +145,19 @@\n     </div>\n   </div>\n )}\n \n-      <div className=\"d-flex gap-2\">\n-        <Button onClick={handleApply} disabled={applied} variant=\"primary\">\n-          {applied ? 'Applied' : 'Apply'}\n-        </Button>\n-      </div>\n+{(() => {\n+  const user = JSON.parse(localStorage.getItem('user') || '{}');\n+  if (user?.role === 'admin') return null;\n+\n+  return (\n+    <div className=\"d-flex gap-2 mt-3\">\n+      <Button onClick={handleApply} disabled={applied} variant=\"primary\">\n+        {applied ? 'Applied' : 'Apply'}\n+      </Button>\n     </div>\n   );\n+})()}\n+    </div>\n+  );\n }\n"
+                },
+                {
+                    "date": 1761281380569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,29 +55,29 @@\n   };\n \n   const mapSrc = useMemo(() => {\n     if (!event || !event.location) return null;\n-  \n+\n     // if it's a simple string\n     if (typeof event.location === 'string') {\n       const match = event.location.match(/<iframe[^>]+src=[\"']([^\"']+)[\"']/i);\n       return match ? match[1] : null;\n     }\n-  \n+\n     // if it's an object (some APIs return location as { name: \"...iframe...\" })\n     if (typeof event.location?.name === 'string') {\n       const match = event.location.name.match(/<iframe[^>]+src=[\"']([^\"']+)[\"']/i);\n       return match ? match[1] : null;\n     }\n-  \n+\n     return null;\n   }, [event]);\n-  \n \n+\n   if (!event) return <div>Loading…</div>;\n \n-  \n \n+\n   return (\n     <div>\n       <h2 className=\"mb-1\">{event.title}</h2>\n \n@@ -129,35 +129,35 @@\n           ) : null}\n         </div>\n       )}\n \n-      {/* Embedded map (safe: we render only the src attr) */}\n+      \n       {mapSrc && (\n-  <div className=\"mb-4 col-sm-8\">\n-    <div className=\"ratio ratio-16x9 rounded overflow-hidden shadow-sm\">\n-      <iframe\n-        src={mapSrc}\n-        style={{ border: 0 }}\n-        loading=\"lazy\"\n-        referrerPolicy=\"no-referrer-when-downgrade\"\n-        allowFullScreen\n-        title=\"Event location map\"\n-      />\n-    </div>\n-  </div>\n-)}\n+        <div className=\"mb-4 col-sm-8\">\n+          <div className=\"ratio ratio-16x9 rounded overflow-hidden shadow-sm\">\n+            <iframe\n+              src={mapSrc}\n+              style={{ border: 0 }}\n+              loading=\"lazy\"\n+              referrerPolicy=\"no-referrer-when-downgrade\"\n+              allowFullScreen\n+              title=\"Event location map\"\n+            />\n+          </div>\n+        </div>\n+      )}\n \n-{(() => {\n-  const user = JSON.parse(localStorage.getItem('user') || '{}');\n-  if (user?.role === 'admin') return null;\n+      {(() => {\n+        const user = JSON.parse(localStorage.getItem('user') || '{}');\n+        if (user?.role === 'admin') return null;\n \n-  return (\n-    <div className=\"d-flex gap-2 mt-3\">\n-      <Button onClick={handleApply} disabled={applied} variant=\"primary\">\n-        {applied ? 'Applied' : 'Apply'}\n-      </Button>\n+        return (\n+          <div className=\"d-flex gap-2 mt-3\">\n+            <Button onClick={handleApply} disabled={applied} variant=\"primary\">\n+              {applied ? 'Applied' : 'Apply'}\n+            </Button>\n+          </div>\n+        );\n+      })()}\n     </div>\n   );\n-})()}\n-    </div>\n-  );\n }\n"
+                },
+                {
+                    "date": 1761281395237,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n // For display (cards/titles), turn location into a short label.\n function locationLabel(loc) {\n   if (!loc) return 'TBA';\n   if (typeof loc === 'string') {\n-    // If it's an iframe string, show generic label\n+    \n     if (/<iframe/i.test(loc)) return 'See map below';\n     // else show the text directly\n     return loc;\n   }\n"
                 }
             ],
             "date": 1760209996491,

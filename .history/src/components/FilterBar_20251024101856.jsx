@@ -8,7 +8,7 @@ const SORTS = [
 ];
 
 export default function FilterBar({ filters, setFilters }) {
-  const safe = (v) => (v ?? ''); 
+  const safe = (v) => (v ?? ''); /
 
   return (
     <div className="row g-2 align-items-center mb-3">

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1760209916195,
@@ -20,6 +20,10 @@
                 {
                     "date": 1761128391451,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,9 @@\n           ))}\n         </Form.Select>\n       </div>\n \n-      <div className=\"col-sm\">\n+      {/* <div className=\"col-sm\">\n         <Form.Select\n           value={safe(filters.sort)}\n           onChange={(e) => setFilters((f) => ({ ...f, sort: e.target.value }))}\n         >\n@@ -58,8 +58,8 @@\n               {s.label}\n             </option>\n           ))}\n         </Form.Select>\n-      </div>\n+      </div> */}\n     </div>\n   );\n }\n"
+                },
+                {
+                    "date": 1761281336411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,65 @@\n+import { Form } from 'react-bootstrap';\n+\n+const DEPARTMENTS = ['IT', 'CS', 'ME', 'Marketing', 'HR', 'Other'];\n+const TYPES = ['Workshop', 'Contest', 'Seminar', 'Webinar', 'Game', 'Other'];\n+const SORTS = [\n+  { value: 'startAt', label: 'Date' },\n+  { value: 'createdAt', label: 'Created' },\n+];\n+\n+export default function FilterBar({ filters, setFilters }) {\n+  const safe = (v) => (v ?? ''); /\n+\n+  return (\n+    <div className=\"row g-2 align-items-center mb-3\">\n+      <div className=\"col-sm\">\n+        <Form.Control\n+          placeholder=\"Search keywords\"\n+          value={safe(filters.q)}\n+          onChange={(e) => setFilters((f) => ({ ...f, q: e.target.value }))}\n+        />\n+      </div>\n+\n+      <div className=\"col-sm\">\n+        <Form.Select\n+          value={safe(filters.department)}\n+          onChange={(e) => setFilters((f) => ({ ...f, department: e.target.value }))}\n+        >\n+          <option value=\"\">All Departments</option>\n+          {DEPARTMENTS.map((d) => (\n+            <option key={d} value={d}>\n+              {d}\n+            </option>\n+          ))}\n+        </Form.Select>\n+      </div>\n+\n+      <div className=\"col-sm\">\n+        <Form.Select\n+          value={safe(filters.type)}\n+          onChange={(e) => setFilters((f) => ({ ...f, type: e.target.value }))}\n+        >\n+          <option value=\"\">All Types</option>\n+          {TYPES.map((t) => (\n+            <option key={t} value={t}>\n+              {t}\n+            </option>\n+          ))}\n+        </Form.Select>\n+      </div>\n+\n+      {/* <div className=\"col-sm\">\n+        <Form.Select\n+          value={safe(filters.sort)}\n+          onChange={(e) => setFilters((f) => ({ ...f, sort: e.target.value }))}\n+        >\n+          {SORTS.map((s) => (\n+            <option key={s.value} value={s.value}>\n+              {s.label}\n+            </option>\n+          ))}\n+        </Form.Select>\n+      </div> */}\n+    </div>\n+  );\n+}\n"
                 }
             ],
             "date": 1760209916195,

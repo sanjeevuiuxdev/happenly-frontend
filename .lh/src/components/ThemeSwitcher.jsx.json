@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1760209872065,
@@ -24,6 +24,10 @@
                 {
                     "date": 1761238486480,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n       </Dropdown.Toggle>\n       <Dropdown.Menu>\n         <Dropdown.Item active={theme==='light'} onClick={set('light')}>Light</Dropdown.Item>\n         <Dropdown.Item active={theme==='dark'}  onClick={set('dark')}>Dark</Dropdown.Item>\n-        <Dropdown.Item active={theme==='auto'}  onClick={set('auto')}>Auto</Dropdown.Item>\n+        {/* <Dropdown.Item active={theme==='auto'}  onClick={set('auto')}>Auto</Dropdown.Item> */}\n       </Dropdown.Menu>\n     </Dropdown>\n   );\n }\n"
+                },
+                {
+                    "date": 1761281356570,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   const [theme, setTheme] = useState(localStorage.getItem(STORAGE_KEY) || 'light');\n \n   useEffect(() => {\n     applyTheme(theme);\n-    // keep in sync when system scheme changes and user picked \"auto\"\n+    \n     const mq = window.matchMedia('(prefers-color-scheme: dark)');\n     const onChange = () => theme === 'auto' && applyTheme('auto');\n     mq.addEventListener('change', onChange);\n     return () => mq.removeEventListener('change', onChange);\n"
                 }
             ],
             "date": 1760209872065,

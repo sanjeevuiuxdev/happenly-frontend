@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 7,
             "patches": [
                 {
                     "date": 1760512008148,
@@ -28,6 +28,14 @@
                 {
                     "date": 1761129871268,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -102,18 +102,18 @@\n               </Form.Group>\n             </Col>\n           </Row>\n \n-          // In CreateEventModal.jsx and EventEditModal.jsx\n+          {/* // In CreateEventModal.jsx and EventEditModal.jsx */}\n <Form.Group className=\"mb-3\">\n   <Form.Label>Location <small className=\"text-muted\">(text or Google Maps iframe)</small></Form.Label>\n   <Form.Control\n     name=\"location\"\n     as=\"textarea\"        // if you prefer single-line keep it \"type='text'\"\n     rows={2}\n     placeholder='e.g. \"Auditorium\" or paste Google Maps <iframe ... ></iframe>'\n     value={form.location || ''}\n-    onChange={onChange}\n+    onChange={change}\n   />\n </Form.Group>\n \n \n"
+                },
+                {
+                    "date": 1761281319836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -107,9 +107,9 @@\n <Form.Group className=\"mb-3\">\n   <Form.Label>Location <small className=\"text-muted\">(text or Google Maps iframe)</small></Form.Label>\n   <Form.Control\n     name=\"location\"\n-    as=\"textarea\"        // if you prefer single-line keep it \"type='text'\"\n+    as=\"textarea\"        \n     rows={2}\n     placeholder='e.g. \"Auditorium\" or paste Google Maps <iframe ... ></iframe>'\n     value={form.location || ''}\n     onChange={change}\n"
+                },
+                {
+                    "date": 1761281330901,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n   const onFile = (e) => setFiles(Array.from(e.target.files || []));\n \n   const submit = async (e) => {\n     e.preventDefault();\n-    // If admin selected new files -> send multipart; else send JSON\n+   \n     if (files.length) {\n       const fd = new FormData();\n       Object.entries(form).forEach(([k,v]) => fd.append(k, v ?? ''));\n       files.forEach(f => fd.append('media', f));\n@@ -102,9 +102,9 @@\n               </Form.Group>\n             </Col>\n           </Row>\n \n-          {/* // In CreateEventModal.jsx and EventEditModal.jsx */}\n+         \n <Form.Group className=\"mb-3\">\n   <Form.Label>Location <small className=\"text-muted\">(text or Google Maps iframe)</small></Form.Label>\n   <Form.Control\n     name=\"location\"\n"
                 }
             ],
             "date": 1760512008148,

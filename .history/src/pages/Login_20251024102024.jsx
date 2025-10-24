@@ -10,7 +10,7 @@ export default function Login(){
     const { data } = await login(form)
     localStorage.setItem('token', data.token)
     localStorage.setItem('role', data.user?.role || 'user')   
-    localStorage.setItem('user', JSON.stringify(data.user)); 
+    localStorage.setItem('user', JSON.stringify(data.user)); // optional, handy
     window.location.href = '/'
   }
 
