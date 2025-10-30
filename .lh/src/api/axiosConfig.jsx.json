@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1760209742460,
@@ -32,6 +32,14 @@
                 {
                     "date": 1761289005335,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n const api = axios.create({\n   // baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true,\n   // baseURL: import.meta.env.VITE_API_URL || 'https://happenly-backend.onrender.com', withCredentials: true,\n-  baseURL: 'https://happenly-backend.onrender.com',\n+  baseURL: 'https://happenly-backend.onrender.comapi/v1',\n \n });\n \n api.interceptors.request.use((cfg) => {\n"
+                },
+                {
+                    "date": 1761673048156,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n \n const api = axios.create({\n   // baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true,\n   // baseURL: import.meta.env.VITE_API_URL || 'https://happenly-backend.onrender.com', withCredentials: true,\n-  baseURL: 'https://happenly-backend.onrender.comapi/v1',\n+  // baseURL: 'https://happenly-backend.onrender.com/api/v1',\n \n });\n \n api.interceptors.request.use((cfg) => {\n"
+                },
+                {
+                    "date": 1761805850365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n import axios from 'axios';\n \n const api = axios.create({\n-  // baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true,\n+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1', withCredentials: true,\n   // baseURL: import.meta.env.VITE_API_URL || 'https://happenly-backend.onrender.com', withCredentials: true,\n-  // baseURL: 'https://happenly-backend.onrender.com/api/v1',\n+  baseURL: 'https://happenly-backend.onrender.com/api/v1',\n \n });\n \n api.interceptors.request.use((cfg) => {\n"
                 }
             ],
             "date": 1760209742460,

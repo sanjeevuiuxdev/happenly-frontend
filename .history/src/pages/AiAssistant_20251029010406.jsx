@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+// point axios to backend base URL
+// You already have axiosConfig.js — if that file exports axios with baseURL,
+// just import that instead of raw axios.
+// I'll show both options:
+
+// OPTION A: if you already have axiosConfig.js configured with baseURL
+// import api from '../api/axiosConfig';
+
+// OPTION B: quick inline instance (use this if you don't have axiosConfig ready in this file)
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE || 'http://localhost:5000/api/v1',
   withCredentials: true,

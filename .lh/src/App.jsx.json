@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1760209684529,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1761673299448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,9 @@\n           <Route path=\"/signup\" element={<Signup />} />\n           <Route path=\"/ai\" element={<AiAssistant />} />\n           <Route path=\"/dashboard\" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />\n           <Route path=\"*\" element={<div className=\"text-center text-muted\">Not Found</div>} />\n+          <Route path=\"/ai\" element={<AiPage />} />\n         </Routes>\n       </div>\n     </>\n   )\n"
+                },
+                {
+                    "date": 1761673306504,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n           <Route path=\"/signup\" element={<Signup />} />\n           <Route path=\"/ai\" element={<AiAssistant />} />\n           <Route path=\"/dashboard\" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />\n           <Route path=\"*\" element={<div className=\"text-center text-muted\">Not Found</div>} />\n-          <Route path=\"/ai\" element={<AiPage />} />\n+          <Route path=\"/ai\" element={<AI />} />\n         </Routes>\n       </div>\n     </>\n   )\n"
+                },
+                {
+                    "date": 1761673316075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,9 @@\n import Signup from './pages/Signup'\n import Dashboard from './pages/Dashboard'\n import AiAssistant from './pages/AiAssistant'\n import ProtectedRoute from './components/ProtectedRoute'\n+import AiPage from './pages/AiAssistant'\n \n export default function App(){\n   return (\n     <>\n@@ -22,9 +23,9 @@\n           <Route path=\"/signup\" element={<Signup />} />\n           <Route path=\"/ai\" element={<AiAssistant />} />\n           <Route path=\"/dashboard\" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />\n           <Route path=\"*\" element={<div className=\"text-center text-muted\">Not Found</div>} />\n-          <Route path=\"/ai\" element={<AI />} />\n+          <Route path=\"/ai\" element={<AiPage />} />\n         </Routes>\n       </div>\n     </>\n   )\n"
                 }
             ],
             "date": 1760209684529,

@@ -8,7 +8,6 @@ import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import AiAssistant from './pages/AiAssistant'
 import ProtectedRoute from './components/ProtectedRoute'
-import AiPage from './pages/AiAssistant'
 
 export default function App(){
   return (
@@ -24,7 +23,7 @@ export default function App(){
           <Route path="/ai" element={<AiAssistant />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="*" element={<div className="text-center text-muted">Not Found</div>} />
-          <Route path="/ai" element={<AiPage />} />
+          <Route path="/ai" element={<AI />} />
         </Routes>
       </div>
     </>

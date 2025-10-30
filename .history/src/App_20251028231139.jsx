@@ -8,7 +8,6 @@ import Signup from './pages/Signup'
 import Dashboard from './pages/Dashboard'
 import AiAssistant from './pages/AiAssistant'
 import ProtectedRoute from './components/ProtectedRoute'
-import AiPage from './pages/AiAssistant'
 
 export default function App(){
   return (
