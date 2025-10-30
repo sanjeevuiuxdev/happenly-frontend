@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1760210070821,
@@ -20,6 +20,10 @@
                 {
                     "date": 1761753315728,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,7 @@\n import { useState } from 'react';\n import axios from 'axios';\n \n-// point axios to backend base URL\n-// You already have axiosConfig.js — if that file exports axios with baseURL,\n-// just import that instead of raw axios.\n-// I'll show both options:\n-\n-// OPTION A: if you already have axiosConfig.js configured with baseURL\n-// import api from '../api/axiosConfig';\n-\n-// OPTION B: quick inline instance (use this if you don't have axiosConfig ready in this file)\n const api = axios.create({\n   baseURL: import.meta.env.VITE_API_BASE || 'http://localhost:5000/api/v1',\n   withCredentials: true,\n });\n"
+                },
+                {
+                    "date": 1761808684057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import { useState } from 'react';\n import axios from 'axios';\n \n const api = axios.create({\n-  baseURL: import.meta.env.VITE_API_BASE || 'http://localhost:5000/api/v1',\n+  baseURL: ,\n   withCredentials: true,\n });\n \n export default function AiPage() {\n"
                 }
             ],
             "date": 1760210070821,

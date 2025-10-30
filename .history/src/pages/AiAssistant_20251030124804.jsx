@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://happenly-backend.onrender.com/api/v1',
+  baseURL: ,
   withCredentials: true,
 });
 
